@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Simplesite | Home{% endblock %}
+
+{% block content %}
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<meta charset="utf-8">
+</head>
+<body>
+<div class="container" id="login">
+<h2 class="form-signin-heading" class="text-muted"><strong>Welcome.</strong> Please login.</h2>
+<form  method="get" class="form-signin">
+<fieldset>
+<div class="form-group">
+<p><input type="text" required value="Username" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' "></p>
+</div>
+<div class="form-group">
+<p><input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
+</div>
+<p><a href="/accounts/login" type="submit" value="Login" class="btn btn-md btn-primary">Login</a></p>
+<p><a href="/accounts/forgotpwd" data-toggle="tooltip" title="Forgot Password!! Click here to retreive your password">Forgot Password?</a></p>
+</fieldset>
+</form>
+</div> <!-- end login -->
+</body>
+
+{% endblock %}

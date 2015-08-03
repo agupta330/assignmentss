@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ideation Portal - User Registration</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"></script>
+<script>
+$(document).ready(function() {
+
+			$('#signupform').validate({
+
+			rules: {
+
+				inputEmail: {
+					required: true,
+      			},
+      			inputPassword: {
+         			required: true,
+         			rangelength:[8,12]
+      			},
+                firstName: {
+      		        required: true,
+      		    },
+      		    lastName: {
+      		        required: true,
+      		    },
+      		    phoneNumber: {
+      		        required: true,
+      		        number: true,
+      		        rangelength:[10,12]
+      		    },
+                date:  {
+                    required:true,
+                },
+                month: {
+                    required:true,
+                },
+                year:  {
+                    required:true,
+                },
+                postalAddress: {
+                    required: true,
+                },
+                zipCode: {
+                    required: true,
+                    number: true,
+                    minlength:6
+                },
+                terms: {
+                    required:true,
+                },
+                genderRadios: {
+                    required:true,
+                },
+
+      		    inputPasswordConfirm: {equalTo:'#inputPassword'},
+      		    spam: "required"
+
+
+          	},
+
+
+          	messages:  {
+
+      			inputEmail: {
+        			required: "Please supply a email."
+        		},
+        		inputPassword: {
+        			required: "Please type a password",
+        			rangelength: "Password must be between 8 and 12 characters long."
+        		},
+       			inputPasswordConfirm: {
+        		    equalTo: "The passwords do not match."
+      			},
+                firstName: {
+                    required: "Please enter your firstname."
+                },
+                lastName:  {
+                    required: "Please enter your Lastname."
+                },
+                phoneNumber:  {
+                    required: "Please enter your 10 digit Phone Number.",
+                    number:"Please provide numeric digits only",
+                    rangelength:"Phone No must be between 10 and 12 characters long."
+
+                },
+                date:   {
+                    required:"Please provide the date"
+                },
+                month:  {
+                    required:"Please provide the month"
+                },
+                year:   {
+                    required:"Please provide the year"
+                },
+                postalAddress: {
+                    required: "Please enter your valid Postal Address."
+                },
+                zipCode: {
+                   required: "Please enter your valid ZipCode.",
+                   number:"Please provide numeric digits only.",
+                   minlength:"Please provide at least 6 digit Zipcode"
+                },
+                terms: {
+                    required: "You must agree to the terms and conditions"
+                },
+                genderRadios: {
+                    required: "Please select the gender"
+                },
+           	},
+
+          });
+         });
+</script>
+</head>
+<body>
+<div class="bs-example">
+    <h1>Sign Up</h1>
+    <form class="form-horizontal" action="/accounts/register/complete/" name="signupform" method="post" id="signupform" role="form">{% csrf_token %}
+        <div class="form-group has-success has-feedback">
+            <label class="control-label col-xs-3" for="inputEmail">Email:</label>
+            <div class="col-xs-9">
+                <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
+				<span class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group has-warning has-feedback">
+            <label class="control-label col-xs-3" for="inputPassword">Password:</label>
+            <div class="col-xs-9">
+                <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" >
+				<span class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="inputPasswordConfirm">Confirm Password:</label>
+            <div class="col-xs-9">
+             <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" placeholder="Confirm" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="firstName">First Name:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="lastName">Last Name:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" >
+            </div>
+        </div>
+        <div class="form-group has-error has-feedback">
+            <label class="control-label col-xs-3" for="phoneNumber">Phone:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+				<span class="help-block"></span>
+            </div>
+        </div>
+
+          <div class="form-group">
+            <label class="control-label col-xs-3">Date of Birth:</label>
+            <div class="col-xs-3">
+                <select name="date" class="form-control">
+                      <option value="">Date</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <select name="month" class="form-control">
+                     <option value="">Month</option>
+                     <option value="1">January</option>
+                     <option value="2">February</option>
+                     <option value="3">March</option>
+                     <option value="4">April</option>
+                     <option value="5">May</option>
+                     <option value="6">June</option>
+                     <option value="7">July</option>
+                     <option value="8">August</option>
+                     <option value="9">September</option>
+                     <option value="10">October</option>
+                     <option value="11">November</option>
+                     <option value="12">December</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <select name="year" class="form-control">
+                     <option value="">Year</option>
+                     <option value="1">1990</option>
+                     <option value="2">1991</option>
+                     <option value="3">1992</option>
+                     <option value="4">1993</option>
+                     <option value="5">1994</option>
+                     <option value="6">1995</option>
+                     <option value="7">1996</option>
+                     <option value="8">1997</option>
+                     <option value="9">1998</option>
+                     <option value="10">1999</option>
+                     <option value="11">2000</option>
+                     <option value="12">2001</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="postalAddress">Address:</label>
+            <div class="col-xs-9">
+                <textarea rows="3" class="form-control" id="postalAddress" name="postalAddress" placeholder="Postal Address"></textarea>
+                <span class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group has-warning has-feedback">
+            <label class="control-label col-xs-3" for="zipCode">Zip Code:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Zip Code">
+                <span class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">Gender:</label>
+            <div class="col-xs-2">
+                <label class="radio-inline">
+                    <input type="radio" name="genderRadios" value="male"> Male
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="radio-inline">
+                    <input type="radio" name="genderRadios" value="female"> Female
+                </label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="news"> Send me latest news and updates.
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="agree" name="terms" id="terms">I agree to the <a href="#">Terms and Conditions</a>.
+                    <span class="help-block"></span>
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
